@@ -1,0 +1,8 @@
+<div>
+    <h2>{{qstns.title}}</h2>
+    <h3>Version : {{qstns.version}}</h3>
+    <form [formGroup]="myFg"> 
+    <app-my-question *ngFor="let qstn of qstns.questions" [qstn]="qstn" [fg]="myFg"></app-my-question>
+    <button [disabled]="!myFg.valid" (click)="saveForm()">Save</button>
+    </form>
+</div>

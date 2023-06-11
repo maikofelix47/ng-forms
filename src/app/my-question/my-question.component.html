@@ -1,0 +1,38 @@
+<div [formGroup]="fg">
+<label [for]="qstn.id">{{qstn.label}}</label>
+
+<div class="errors" *ngIf="!singleQstn.valid && singleQstn.dirty">
+    <p *ngIf="singleQstn?.errors?.['required']">
+        Please make sure you fill the {{ qstn.id }}
+    </p>
+</div>
+
+<div [ngSwitch]="qstn.type">
+    <input
+     [id]="qstn.id"
+    *ngSwitchCase="'text'"
+    type="text"
+    [formControlName]="qstn.id"
+    />
+
+    <input
+     [id]="qstn.id"
+    *ngSwitchCase="'number'"
+    type="number"
+    [formControlName]="qstn.id"
+    />
+
+    <select
+    [id]="qstn.id"
+    [name]="qstn.id"
+    [formControlName]="qstn.id"
+    *ngSwitchCase="'single-select'"
+    >
+     <option value=""></option>
+      <option *ngFor="let option of qstn.options;  let i = index;">
+             {{ option.label }}
+      </option>
+    </select>
+
+</div>
+</div>

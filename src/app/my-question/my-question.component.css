@@ -1,0 +1,10 @@
+input.ng-dirty.ng-invalid.ng-touched{
+    border : solid 1px red;
+}
+.errors{
+color: #842029;
+background-color: #f8d7da;
+border-color: #f5c2c7;
+padding-top: 1px;
+padding-bottom: 1px;
+}

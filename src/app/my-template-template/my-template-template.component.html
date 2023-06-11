@@ -1,0 +1,10 @@
+<div>
+    <div class="errors" *ngIf="errorObj.show">
+        {{ errorObj.message }}
+    </div>
+    <label for="email">Email: {{email}}</label>
+    <input type="email"  id="email" [(ngModel)]="email" required/>
+    <label for="password">Password: </label>
+    <input type="password"  id="password" [(ngModel)]="password" required/>
+    <button (click)="onSave()">Save</button>
+</div>

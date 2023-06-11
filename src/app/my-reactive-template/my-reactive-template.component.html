@@ -1,0 +1,67 @@
+<div>
+    <h2>My Control</h2>
+    <label for="myControl">My Control: </label>
+    <input id="mycontrol" type="text" [formControl]="mycontrol" />
+    <div class="errors" *ngIf="mycontrol.invalid && mycontrol.dirty">
+         <p *ngIf="mycontrol?.errors?.['required']">
+            Please make sure you fill the value
+        </p>
+        <p *ngIf="mycontrol?.errors?.['minlength']">
+            Please make sure your input has a minimum of  {{ mycontrol.errors?.['minlength']['requiredLength'] }} letters
+        </p>
+    </div>
+    <button (click)="saveMyControl()" [disabled]="mycontrol.invalid"> Save</button>
+</div>
+
+<hr />
+<div>
+    <h2>Sign Up form</h2>
+    <form [formGroup]="signUpForm">
+    <label for="email">Email:</label>
+    <input type="email"  id="email" formControlName="email"/>
+    <div class="errors" *ngIf="email?.invalid && email?.dirty">
+       <p *ngIf="email?.errors?.['email']">
+            Please enter a correct email address
+       </p>
+    </div>
+
+    <label for="password">Password: </label>
+    <input type="password"  id="password" formControlName="password"/>
+
+
+    <button (click)="onSave()" [disabled]="signUpForm.invalid">Save</button>
+    </form>
+    <button (click)="addInput()">Add Input</button>  
+</div>
+<hr />
+<div>
+    <h2>Profile Form</h2>
+    <form [formGroup]="profileForm" (ngSubmit)="saveProfile()">
+
+        <div formGroupName="personalDetails">
+            <h4>Personal Details</h4>
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" formControlName="firstName"/>
+            <div class="errors" *ngIf="!firstName?.valid && firstName?.dirty">
+                <p *ngIf="firstName?.errors?.['required']">
+                    Please make sure you fill the firstName
+                </p>
+             </div>
+
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" formControlName="lastName"/>
+        </div>
+        <div formGroupName="employmentDetails">
+             <h4>Employment Details</h4>
+            <label for="company">Company</label>
+            <input type="text" id="company" formControlName="company"/>
+
+            <label for="title">Title</label>
+            <input type="text" id="title" formControlName="title"/>
+
+        </div>
+
+        <button type="submit" [disabled]="profileForm.invalid">Save</button>
+
+    </form>
+</div>
